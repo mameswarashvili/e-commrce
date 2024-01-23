@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import "./AddReviews.css";
 export const AddReviews = (props) => {
   const [chosenStarsLength] = useState(5);
@@ -38,11 +39,25 @@ export const AddReviews = (props) => {
 
   console.log(starIndex);
 
+  const initialValues = {
+    starRating: 0,
+    headLine: "",
+    writtenReview: "",
+  };
   return (
     <div className="addReviewMainBox">
       <h1>Add a review</h1>
       <p>Overall Rating</p>
       {customStars}
+      <Formik initialValues={initialValues}>
+        <Form>
+          <div>
+            <label htmlFor="headLine">Headline</label>
+            <Field name="headLine" type="text" className="formikHeadline" />
+            <ErrorMessage name="headLine" />
+          </div>
+        </Form>
+      </Formik>
     </div>
   );
 };

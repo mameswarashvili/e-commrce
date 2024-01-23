@@ -32,3 +32,11 @@
   width: 33px;
   height: 33px;
 }
+.formikHeadline {
+  width: 90%;
+  height: 39px;
+  fill: rgba(248, 248, 248, 0);
+  stroke-width: 1px;
+  border-radius: 10px;
+  border: 1px solid #b6b6b6;
+}
