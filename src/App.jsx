@@ -15,7 +15,7 @@ import star from "./assets/icon-star.svg";
 import yellowStar from "./assets/yellowStar.svg";
 import { product, assetsBaseUrl, loggedInUser } from "./data";
 import { Reviews } from "./components/Reviews";
-
+import { AddReviews } from "./components/AddReviews";
 import "./App.css";
 
 function App() {
@@ -71,9 +71,14 @@ function App() {
   };
   const reviews = product.reviews;
 
+  const addReview = () => {
+    setAddedReview(!addedReview);
+    setAddYourReview(!addYourReview);
+  };
+
   const reviewsDiv = reviews.map((item, itemIndex) => {
-    if (addedReview) {
-      return (
+    return (
+      <>
         <Reviews
           key={itemIndex}
           name={item.user}
@@ -89,11 +94,19 @@ function App() {
           setAddYourReview={setAddYourReview}
           addYourReview={addYourReview}
         />
-      );
-    } else {
-      return <h1>damexmaret chemi</h1>;
-    }
+      </>
+    );
   });
+  const addReviews = () => {
+    return <AddReviews star={star} yellowStar={yellowStar} />;
+  };
+  const reviewsDivShown = () => {
+    if (addedReview) {
+      return reviewsDiv;
+    } else if (addYourReview) {
+      return addReviews();
+    }
+  };
 
   return (
     <>
@@ -200,11 +213,13 @@ function App() {
             Add to cart
           </button>
         </div>
-        <div className="customer-button">
-          <p>Customer reviews</p>
-          <button>Add</button>
-        </div>
-        {reviewsDiv}
+        {addedReview ? (
+          <div className="customer-button">
+            <p>Customer reviews</p>
+            <button onClick={() => addReview()}>Add</button>
+          </div>
+        ) : null}
+        {reviewsDivShown()}
       </div>
     </>
   );

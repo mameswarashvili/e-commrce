@@ -5,10 +5,7 @@ export const Reviews = (props) => {
   const deleteReview = () => {
     setYourReview(!yourReview);
   };
-  const editReview = () => {
-    props.setAddedReview(!props.addedReview);
-    props.setAddYourReview(!props.addYourReview);
-  };
+
   const costumersReview = () => {
     if (yourReview) {
       return (
@@ -39,7 +36,7 @@ export const Reviews = (props) => {
         <div className="innerEditDiv">
           <button onClick={() => deleteReview()}>Delete</button>
 
-          <button onClick={() => editReview()}>Edit</button>
+          <button>Edit</button>
         </div>
       );
     } else {
