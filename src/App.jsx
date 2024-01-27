@@ -25,10 +25,10 @@ function App() {
   const [basket, setBasket] = useState(false);
   const [addedReview, setAddedReview] = useState(true);
   const [addYourReview, setAddYourReview] = useState(false);
-  // const [addedSneaker, setAddedSneaker] = useState(0);
+  const [inGeneralReviews, setInGeneralReviews] = useState(true);
+  const [reviewsList, setReviewsList] = useState([product.reviews]);
 
   const profilePicture = assetsBaseUrl + "/" + loggedInUser.profileImage;
-  // console.log(sneakerAmount);
   const originalImages = `${assetsBaseUrl}/${product.images.originals[photoIndex]}`;
   const thumbnailImages = `${assetsBaseUrl}/${product.images.thumbnails[3]}`;
   const handlePrevIcon = () => {
@@ -74,6 +74,64 @@ function App() {
   const addReview = () => {
     setAddedReview(!addedReview);
     setAddYourReview(!addYourReview);
+    // reviewsList[1] = !reviewsList[1];
+  };
+  const deleteReview = () => {
+    setInGeneralReviews(!inGeneralReviews);
+    reviewsList[1] = !reviewsList[1];
+  };
+  const chosenStar = () => {
+    const chosenStars = [];
+
+    for (let i = -1; i < reviewsList[1].starRating; i++) {
+      chosenStars.push(
+        <button key={i} className="reviewStarButton">
+          <img src={yellowStar} alt="" className="reviewStar" />
+        </button>
+      );
+    }
+
+    for (let i = reviewsList[1].starRating; i < 4; i++) {
+      chosenStars.push(
+        <button key={i} className="reviewStarButton">
+          <img src={star} alt="" className="reviewStar" />
+        </button>
+      );
+    }
+
+    return chosenStars;
+  };
+
+  const newReview = () => {
+    if (reviewsList[1]) {
+      return (
+        <>
+          <div className="customersReviews yourReview ">
+            <div className="customerReview">
+              <div className="inner-customerReview">
+                <div className="editDiv">
+                  <img
+                    src={placeHolder}
+                    alt="placehold"
+                    className="reviewImg"
+                  />
+                  <div className="innerEditDiv">
+                    <button onClick={() => deleteReview()}>Delete</button>
+                    <button>Edit</button>
+                  </div>
+                </div>
+                <h1>{loggedInUser.name}</h1>
+                <div className="starsDiv">{chosenStar()}</div>
+                <h1>{reviewsList[1].headLine}</h1>
+                <p>{reviewsList[1].writtenReview}</p>
+              </div>
+            </div>
+          </div>
+        </>
+      );
+    } else {
+      null;
+    }
   };
 
   const reviewsDiv = reviews.map((item, itemIndex) => {
@@ -93,13 +151,27 @@ function App() {
           addedReview={addedReview}
           setAddYourReview={setAddYourReview}
           addYourReview={addYourReview}
+          reviewsList={reviewsList}
+          setReviewsList={setReviewsList}
+          inGeneralReviews={inGeneralReviews}
+          setInGeneralReviews={setInGeneralReviews}
+          deleteReview={deleteReview}
         />
       </>
     );
   });
   const addReviews = () => {
     return (
-      <AddReviews star={star} yellowStar={yellowStar} addReview={addReview} />
+      <AddReviews
+        star={star}
+        yellowStar={yellowStar}
+        addReview={addReview}
+        reviewsList={reviewsList}
+        setReviewsList={setReviewsList}
+        addedReview={addedReview}
+        setAddedReview={setAddedReview}
+        setAddYourReview={setAddYourReview}
+      />
     );
   };
   const reviewsDivShown = () => {
@@ -115,10 +187,17 @@ function App() {
       <div className="body">
         <div className="header">
           <div className="header-LeftSide">
-            <img src={menu} alt="menuLogo" />
+            <img src={menu} alt="menuLogo" className="menuLogo" />
             <a href="#">
               <img src={logo} alt="logo" />
             </a>
+            <div className="left-side-menu">
+              <a href="#">Collections</a>
+              <a href="#">Men</a>
+              <a href="#">Women</a>
+              <a href="#">About</a>
+              <a href="#">Contact</a>
+            </div>
           </div>
           <div className="header-RightSide">
             {savedSneakerAmount ? <span>{savedSneakerAmount}</span> : null}
@@ -128,6 +207,7 @@ function App() {
             <img src={profilePicture} alt="profilePicture" />
           </div>
         </div>
+        <hr className="firstHr"/>
         <div className="shoesCarousel">
           {basket ? (
             savedSneakerAmount ? (
@@ -215,12 +295,13 @@ function App() {
             Add to cart
           </button>
         </div>
-        {addedReview ? (
+        {addedReview && !reviewsList[1] ? (
           <div className="customer-button">
             <p>Customer reviews</p>
-            <button onClick={() => addReview()}>Add</button>
+            <button onClick={() => addReview()}></button>
           </div>
         ) : null}
+        {reviewsList[1] && newReview()}
         {reviewsDivShown()}
       </div>
     </>

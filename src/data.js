@@ -23,7 +23,7 @@ export const product = {
   },
   reviews: [
     {
-      user: "Ryan Welles",
+      user: "Morgan Carter",
       starRating: 4,
       writtenReview:
         "The quality is good considering the affordable price point. They look good with jeans and are quite comfortable for daily wear.",

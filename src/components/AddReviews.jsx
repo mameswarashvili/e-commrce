@@ -12,10 +12,10 @@ export const AddReviews = (props) => {
     writtenReview: "",
   };
 
-  console.log(starIndex == -1);
   const validationSchema = object({
-    headLine: string().min(4).required("Please enter your headline"),
+    headLine: string().trim().min(4).required("Please enter your headline"),
     writtenReview: string()
+      .trim()
       .min(15)
       .required("Please enter your written review"),
     starRating: number().required("Please select a star rating"),
@@ -32,7 +32,9 @@ export const AddReviews = (props) => {
         validateOnBlur={false}
         validateOnChange={false}
         onSubmit={(values) => {
-          console.log(values);
+          props.setReviewsList([, values, ...props.reviewsList]);
+          props.setAddedReview(true);
+          props.setAddYourReview(false);
         }}
       >
         {(formik) => {

@@ -1,6 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
+
 export const Reviews = (props) => {
-  const [chosenStarsLength, setChosenStarLength] = useState(5);
   const [yourReview, setYourReview] = useState(true);
   const deleteReview = () => {
     setYourReview(!yourReview);
@@ -27,21 +27,7 @@ export const Reviews = (props) => {
         </div>
       );
     } else {
-      <div className="customerReview">
-        <div className="inner-customerReview">
-          <div className="editDiv">
-            <img
-              src={props.placeHolder}
-              alt="placehold"
-              className="reviewImg"
-            />
-          </div>
-          <h1>{props.name}</h1>
-          <div className="starsDiv">{chosenStar()}</div>
-          <h1>{props.headLine}</h1>
-          <p>{props.writtenReview}</p>
-        </div>
-      </div>;
+      return null;
     }
   };
   const editableDiv = () => {
@@ -49,21 +35,16 @@ export const Reviews = (props) => {
       return (
         <div className="innerEditDiv">
           <button onClick={() => deleteReview()}>Delete</button>
-
           <button>Edit</button>
         </div>
       );
     } else {
-      null;
+      return null;
     }
   };
 
   const chosenStar = () => {
     const chosenStars = [];
-
-    if (chosenStars.length === props.starRating) {
-      return null;
-    }
 
     for (let i = 0; i < props.starRating; i++) {
       chosenStars.push(
@@ -73,9 +54,9 @@ export const Reviews = (props) => {
       );
     }
 
-    for (let i = 0; i < chosenStarsLength - props.starRating; i++) {
+    for (let i = props.starRating; i < 5; i++) {
       chosenStars.push(
-        <button key={i + props.starRating} className="reviewStarButton">
+        <button key={i} className="reviewStarButton">
           <img src={props.star} alt="" className="reviewStar" />
         </button>
       );
@@ -83,15 +64,6 @@ export const Reviews = (props) => {
 
     return chosenStars;
   };
-  return (
-    <div
-      className={
-        props.name === props.userName
-          ? "customersReviews yourReview"
-          : "customersReviews"
-      }
-    >
-      {costumersReview()}
-    </div>
-  );
+
+  return <div className={"customersReviews"}>{costumersReview()}</div>;
 };
