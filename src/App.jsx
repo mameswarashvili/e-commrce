@@ -98,7 +98,9 @@ function App() {
     );
   });
   const addReviews = () => {
-    return <AddReviews star={star} yellowStar={yellowStar} />;
+    return (
+      <AddReviews star={star} yellowStar={yellowStar} addReview={addReview} />
+    );
   };
   const reviewsDivShown = () => {
     if (addedReview) {

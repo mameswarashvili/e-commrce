@@ -8,7 +8,7 @@
   font-size: 22px;
   font-style: normal;
   font-weight: 700;
-  line-height: 48px; /* 218.182% */
+  margin: 15px 0;
 }
 
 .addReviewMainBox p {
@@ -17,7 +17,7 @@
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
-  line-height: 48px; /* 300% */
+  margin: 8px 0;
 }
 .addReviewStarButton {
   width: 33px;
@@ -33,10 +33,66 @@
   height: 33px;
 }
 .formikHeadline {
-  width: 90%;
+  width: 100%;
   height: 39px;
-  fill: rgba(248, 248, 248, 0);
-  stroke-width: 1px;
   border-radius: 10px;
   border: 1px solid #b6b6b6;
+  margin: 15px 0;
+}
+
+.formikwrittenReview {
+  width: 100%;
+  height: 123px;
+  border-radius: 10px;
+  border: 1px solid #b6b6b6;
+  margin-top: 15px;
+}
+label {
+  font-weight: 600;
+}
+.errorMessage {
+  color: #ff3d3d;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  margin: 10px 0;
+  display: block;
+}
+
+Form div {
+  margin: 15px 0;
+}
+
+.footerDiv {
+  width: 100%;
+  margin: auto;
+  text-align: end;
+}
+.footerDiv button {
+  width: 91.912px;
+  height: 40px;
+  border-radius: 7px;
+  color: #fff;
+  text-align: center;
+  font-family: "Kumbh Sans";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border: none;
+  margin-left: 15px;
+}
+.footerDiv button:nth-child(1) {
+  background: #979797;
+}
+.footerDiv button:nth-child(2) {
+  background: #ff7e1b;
+}
+input {
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+textarea {
+  padding: 15px;
+  box-sizing: border-box;
 }

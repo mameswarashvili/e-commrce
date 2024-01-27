@@ -27,7 +27,21 @@ export const Reviews = (props) => {
         </div>
       );
     } else {
-      null;
+      <div className="customerReview">
+        <div className="inner-customerReview">
+          <div className="editDiv">
+            <img
+              src={props.placeHolder}
+              alt="placehold"
+              className="reviewImg"
+            />
+          </div>
+          <h1>{props.name}</h1>
+          <div className="starsDiv">{chosenStar()}</div>
+          <h1>{props.headLine}</h1>
+          <p>{props.writtenReview}</p>
+        </div>
+      </div>;
     }
   };
   const editableDiv = () => {
