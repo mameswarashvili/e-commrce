@@ -31,6 +31,7 @@ function App() {
   const profilePicture = assetsBaseUrl + "/" + loggedInUser.profileImage;
   const originalImages = `${assetsBaseUrl}/${product.images.originals[photoIndex]}`;
   const thumbnailImages = `${assetsBaseUrl}/${product.images.thumbnails[3]}`;
+  const cartThumbnailImage = `${assetsBaseUrl}/${product.images.thumbnails[3]}`;
   const handlePrevIcon = () => {
     if (photoIndex === 0) {
       setPhotoIndex(3);
@@ -38,6 +39,7 @@ function App() {
       setPhotoIndex(photoIndex - 1);
     }
   };
+  console.log(thumbnailImages);
   const handleNextIcon = () => {
     if (photoIndex === 3) {
       setPhotoIndex(0);
@@ -45,6 +47,7 @@ function App() {
       setPhotoIndex(photoIndex + 1);
     }
   };
+  const handleMiniPhotoClick = () => {};
   const removeSneakerAmount = () => {
     if (sneakerAmount === 0) {
       null;
@@ -207,7 +210,7 @@ function App() {
             <img src={profilePicture} alt="profilePicture" />
           </div>
         </div>
-        <hr className="firstHr"/>
+        <hr className="firstHr" />
         <div className="shoesCarousel">
           {basket ? (
             savedSneakerAmount ? (
@@ -215,7 +218,7 @@ function App() {
                 <h2>Cart</h2>
                 <hr />
                 <div className="ordered-basket-info">
-                  <img src={thumbnailImages} alt="basket-photo" />
+                  <img src={cartThumbnailImage} alt="basket-photo" />
                   <div className="basket-info-inner">
                     <p>Fall Limited Edition Sneakers</p>
                     <p>
@@ -238,11 +241,16 @@ function App() {
               </div>
             )
           ) : null}
-          <img
-            className="sneakersPhoto"
-            src={originalImages}
-            alt={originalImages}
-          />
+          <div className="sneakersPhotosDiv">
+            <img
+              className="sneakersPhoto"
+              src={originalImages}
+              alt={originalImages}
+            />
+            <div className="four-SneakersPhotos">
+              <img src={thumbnailImages} alt="" />
+            </div>
+          </div>
 
           <button
             className="sneakersButtonLeft sneakerButton"
@@ -264,36 +272,63 @@ function App() {
               alt="123"
             />
           </button>
-          <div className="sneakers-info">
-            <p>SNEAKER COMPANY</p>
-            <h2>Fall Limited Edition Sneakers</h2>
-            <p>
-              These low-profile sneakers are your perfect casual wear companion.
-              Featuring a durable rubber outer sole, they’ll withstand
-              everything the weather can offer.
-            </p>
+          <div className="sneakers-infoMainDiv">
+            <div className="sneakers-info">
+              <p>SNEAKER COMPANY</p>
+              <h2>Fall Limited Edition Sneakers</h2>
+              <div className="infoStarsDiv">
+                <div className="infoStarsButtonDiv">
+                  <button className="reviewStarButton">
+                    <img src={yellowStar} alt="" className="reviewStar" />
+                  </button>
+                  <button className="reviewStarButton">
+                    <img src={yellowStar} alt="" className="reviewStar" />
+                  </button>
+                  <button className="reviewStarButton">
+                    <img src={yellowStar} alt="" className="reviewStar" />
+                  </button>
+                  <button className="reviewStarButton">
+                    <img src={yellowStar} alt="" className="reviewStar" />
+                  </button>
+                  <button className="reviewStarButton">
+                    <img src={star} alt="" className="reviewStar" />
+                  </button>
+                </div>
+                <p>4.2 out of 5</p>
+              </div>
+              <p className="sneakers-info-p">
+                These low-profile sneakers are your perfect casual wear
+                companion. Featuring a durable rubber outer sole, they’ll
+                withstand everything the weather can offer.
+              </p>
+            </div>
+            <div className="price-div">
+              <div className="price-div-span">
+                <span>$125.00</span>
+                <span>50%</span>
+              </div>
+
+              <p>$250.00</p>
+            </div>
+            <div className="amountAndAdd">
+              <div className="amount-div">
+                <button onClick={removeSneakerAmount}>
+                  <img src={minus} alt="minus" />
+                </button>
+                <span>{sneakerAmount}</span>
+                <button onClick={addSneakerAmount}>
+                  <img src={plus} alt="plus" />
+                </button>
+              </div>
+              <button
+                className="addToCart"
+                onClick={sneakerAmount ? orderedBasket : null}
+              >
+                <img src={cart} alt="cart" />
+                Add to cart
+              </button>
+            </div>
           </div>
-          <div className="price-div">
-            <span>$125.00</span>
-            <span>50%</span>
-            <span>$250.00</span>
-          </div>
-          <div className="amount-div">
-            <button onClick={removeSneakerAmount}>
-              <img src={minus} alt="minus" />
-            </button>
-            <span>{sneakerAmount}</span>
-            <button onClick={addSneakerAmount}>
-              <img src={plus} alt="plus" />
-            </button>
-          </div>
-          <button
-            className="addToCart"
-            onClick={sneakerAmount ? orderedBasket : null}
-          >
-            <img src={cart} alt="cart" />
-            Add to cart
-          </button>
         </div>
         {addedReview && !reviewsList[1] ? (
           <div className="customer-button">
