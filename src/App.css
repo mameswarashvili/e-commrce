@@ -541,10 +541,17 @@ h1::first-letter {
   }
   .customer-button button {
     width: 272px;
+    margin-right: 70px;
   }
   .customer-button button::before {
     content: "Write a review";
   }
+  .formikHeadline,
+  .formikwrittenReview {
+    width: 60%;
+    display: block;
+  }
+
   @keyframes basketOpenHighRes {
     from {
       height: 0;
@@ -561,17 +568,11 @@ h1::first-letter {
     visibility: hidden;
   }
   .shoesCarousel {
-    width: 100%;
+    width: 90%;
     height: 550px;
+    margin: auto;
   }
-  .four-SneakersPhotos {
-    display: block;
-  }
-  .four-SneakersPhotos img {
-    width: 15%;
-    border-radius: 15px;
-    margin: 13px 11px;
-  }
+
   .shoesCarousel .sneakersPhoto {
     width: 395px;
     height: 395px;
@@ -580,11 +581,10 @@ h1::first-letter {
   .sneakersPhotosDiv {
     width: 50%;
     float: left;
-    margin-left: 45px;
     box-sizing: border-box;
   }
   .sneakers-infoMainDiv {
-    width: 40%;
+    width: 45%;
     float: left;
     margin-top: 45px;
   }
@@ -615,6 +615,93 @@ h1::first-letter {
     width: 35%;
   }
   .addToCart {
+    width: 60%;
+  }
+
+  .four-SneakersPhotos {
+    width: 395px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+  .four-SneakersPhotos button {
+    width: 86px;
+    height: 86px;
+    background: 0;
+    padding: 0;
+    border-radius: 20px;
+    border: 2px solid transparent;
+  }
+
+  .four-SneakersPhotos .clickedThumbnail {
+    border: 3px solid #ff7e1b;
+  }
+
+  .four-SneakersPhotos .clickedThumbnail img {
+    opacity: 25%;
+  }
+  .four-SneakersPhotos img {
+    width: 100%;
+    border-radius: 15px;
+  }
+}
+
+/*  */
+@media only screen and (min-width: 1440px) {
+  .header-RightSide span {
+    right: 17.4%;
+  }
+  .left-side-menu {
+    width: 90%;
+  }
+  .left-side-menu a {
+    font-size: 17px;
+    margin: 0 20px;
+  }
+  .shopping-basket {
+    right: 80px;
+  }
+  .shoesCarousel .sneakersPhoto {
+    width: 445px;
+    height: 445px;
+    border-radius: 15px;
+  }
+  .sneakersPhotosDiv {
+    width: 45%;
+    float: left;
+    box-sizing: border-box;
+    margin-left: 45px;
+  }
+  .four-SneakersPhotos {
+    width: 445px;
+  }
+  .sneakers-infoMainDiv {
+    line-height: 2;
+    margin-top: 25px;
+  }
+  .amountAndAdd {
+    margin-top: 25px;
+  }
+  .sneakers-info h2 {
+    font-size: 40px;
+    line-height: 50px;
+  }
+  .infoStarsDiv {
+    justify-content: flex-start;
+  }
+  .infoStarsButtonDiv {
+    display: flex;
+  }
+  .customer-button {
+    width: 85%;
+  }
+  .customer-button button {
+    margin-right: 85px;
+  }
+  .customersReviews {
+    width: 85%;
+  }
+  .customerReview {
     width: 60%;
   }
 }

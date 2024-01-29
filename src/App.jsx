@@ -30,8 +30,11 @@ function App() {
 
   const profilePicture = assetsBaseUrl + "/" + loggedInUser.profileImage;
   const originalImages = `${assetsBaseUrl}/${product.images.originals[photoIndex]}`;
-  const thumbnailImages = `${assetsBaseUrl}/${product.images.thumbnails[3]}`;
-  const cartThumbnailImage = `${assetsBaseUrl}/${product.images.thumbnails[3]}`;
+  const firstThumbnailImage = `${assetsBaseUrl}/${product.images.thumbnails[3]}`;
+  const secondThumbnailImage = `${assetsBaseUrl}/${product.images.thumbnails[2]}`;
+  const thirdThumbnailImage = `${assetsBaseUrl}/${product.images.thumbnails[1]}`;
+  const fourthThumbnailImage = `${assetsBaseUrl}/${product.images.thumbnails[0]}`;
+  const cartThumbnailImage = `${assetsBaseUrl}/${product.images.originals[0]}`;
   const handlePrevIcon = () => {
     if (photoIndex === 0) {
       setPhotoIndex(3);
@@ -39,7 +42,9 @@ function App() {
       setPhotoIndex(photoIndex - 1);
     }
   };
-  console.log(thumbnailImages);
+  // const handleThumbnailClick = (value) => {
+  //   setPhotoIndex(value);
+  // };
   const handleNextIcon = () => {
     if (photoIndex === 3) {
       setPhotoIndex(0);
@@ -47,7 +52,7 @@ function App() {
       setPhotoIndex(photoIndex + 1);
     }
   };
-  const handleMiniPhotoClick = () => {};
+
   const removeSneakerAmount = () => {
     if (sneakerAmount === 0) {
       null;
@@ -248,7 +253,30 @@ function App() {
               alt={originalImages}
             />
             <div className="four-SneakersPhotos">
-              <img src={thumbnailImages} alt="" />
+              <button
+                className={photoIndex === 0 ? "clickedThumbnail" : null}
+                onClick={() => setPhotoIndex(0)}
+              >
+                <img src={firstThumbnailImage} alt="firstThumbnailImage" />
+              </button>
+              <button
+                className={photoIndex === 1 ? "clickedThumbnail" : null}
+                onClick={() => setPhotoIndex(1)}
+              >
+                <img src={secondThumbnailImage} alt="secondThumbnailImage" />
+              </button>
+              <button
+                className={photoIndex === 2 ? "clickedThumbnail" : null}
+                onClick={() => setPhotoIndex(2)}
+              >
+                <img src={thirdThumbnailImage} alt="thirdThumbnailImage" />
+              </button>
+              <button
+                className={photoIndex === 3 ? "clickedThumbnail" : null}
+                onClick={() => setPhotoIndex(3)}
+              >
+                <img src={fourthThumbnailImage} alt="fourthThumbnailImage" />
+              </button>
             </div>
           </div>
 
