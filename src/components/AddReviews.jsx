@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { string, boolean, object, number } from "Yup";
+import { string, object, number } from "Yup";
 import "./AddReviews.css";
 export const AddReviews = (props) => {
   const [chosenStarsLength, setChosenStarLength] = useState(5);

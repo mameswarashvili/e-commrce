@@ -7,6 +7,7 @@ import shoppingcart from "./assets/icon-cart.svg";
 import previous from "./assets/icon-previous.svg";
 import next from "./assets/icon-next.svg";
 import minus from "./assets/icon-minus.svg";
+import close from "./assets/icon-close.svg";
 import plus from "./assets/icon-plus.svg";
 import logo from "./assets/logo.svg";
 import cart from "./assets/icon-cart.svg";
@@ -27,6 +28,7 @@ function App() {
   const [addYourReview, setAddYourReview] = useState(false);
   const [inGeneralReviews, setInGeneralReviews] = useState(true);
   const [reviewsList, setReviewsList] = useState([product.reviews]);
+  const [menuVisibility, setMenuVisibility] = useState(false);
 
   const profilePicture = assetsBaseUrl + "/" + loggedInUser.profileImage;
   const originalImages = `${assetsBaseUrl}/${product.images.originals[photoIndex]}`;
@@ -42,9 +44,7 @@ function App() {
       setPhotoIndex(photoIndex - 1);
     }
   };
-  // const handleThumbnailClick = (value) => {
-  //   setPhotoIndex(value);
-  // };
+
   const handleNextIcon = () => {
     if (photoIndex === 3) {
       setPhotoIndex(0);
@@ -52,7 +52,10 @@ function App() {
       setPhotoIndex(photoIndex + 1);
     }
   };
-
+  const menuSwitch = () => {
+    setMenuVisibility(!menuVisibility);
+    setAddedReview(!addedReview);
+  };
   const removeSneakerAmount = () => {
     if (sneakerAmount === 0) {
       null;
@@ -195,11 +198,31 @@ function App() {
       <div className="body">
         <div className="header">
           <div className="header-LeftSide">
-            <img src={menu} alt="menuLogo" className="menuLogo" />
+            <button onClick={() => menuSwitch()}>
+              {menuVisibility ? null : (
+                <img src={menu} alt="menuLogo" className="menuLogo" />
+              )}
+            </button>
+
             <a href="#">
               <img src={logo} alt="logo" />
             </a>
-            <div className="left-side-menu">
+            {menuVisibility ? (
+              <div className="left-side-menu">
+                <button onClick={() => menuSwitch()}>
+                  <img src={close} alt="menuLogo" className="menuLogo" />
+                </button>
+                <a href="#">Collections</a>
+                <a href="#">Men</a>
+                <a href="#">Women</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+              </div>
+            ) : null}
+            <div className="left-side-menu-pc">
+              <button onClick={() => menuSwitch()}>
+                <img src={close} alt="menuLogo" className="menuLogo" />
+              </button>
               <a href="#">Collections</a>
               <a href="#">Men</a>
               <a href="#">Women</a>

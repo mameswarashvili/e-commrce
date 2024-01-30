@@ -25,14 +25,15 @@ button {
 }
 .header-LeftSide {
   display: flex;
+  align-items: center;
+}
+.header-LeftSide button {
+  display: none;
 }
 .header-LeftSide a {
   margin-left: 15px;
 }
-.left-side-menu {
-  display: none;
-  visibility: hidden;
-}
+
 .header-RightSide {
   width: 30%;
   margin-left: auto;
@@ -215,11 +216,8 @@ hr {
 }
 .sneakers-info p:nth-child(3) {
   color: #69707d;
-  font-family: "Kumbh Sans";
   font-size: 15px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 25px; /* 166.667% */
+  line-height: 25px;
   margin: 10px 0;
 }
 .price-div {
@@ -266,6 +264,10 @@ hr {
 .amount-div button {
   background: none;
   border: none;
+}
+.left-side-menu button {
+  display: none;
+  visibility: hidden;
 }
 .addToCart {
   display: block;
@@ -432,8 +434,16 @@ h1::first-letter {
   .customer-button button::before {
     content: "Add";
   }
+  .left-side-menu-pc {
+    display: none;
+    visibility: hidden;
+  }
 }
 @media only screen and (max-width: 450px) {
+  .left-side-menu-pc {
+    display: none;
+    visibility: hidden;
+  }
   .header-RightSide span {
     right: 20%;
   }
@@ -443,6 +453,9 @@ h1::first-letter {
 
   .shopping-basket {
     right: 0;
+  }
+  .left-side-menu button {
+    margin: 10px 20px;
   }
 }
 @media only screen and (min-width: 450px) {
@@ -455,8 +468,49 @@ h1::first-letter {
   .customer-button button::before {
     content: "Add";
   }
+  .header-LeftSide button {
+    display: block;
+    width: 32px;
+    height: 20px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .header-LeftSide button {
+    display: block;
+    width: 32px;
+    height: 20px;
+    background: 0;
+    border: 0;
+    padding: 2px 0;
+  }
+  .left-side-menu {
+    width: 70%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow: hidden;
+  }
+  .left-side-menu a {
+    text-decoration: none;
+    color: black;
+  }
+  .left-side-menu button {
+    display: block;
+    visibility: visible;
+    margin: 20px 40px;
+    padding: 2px 0;
+  }
 }
 @media only screen and (min-width: 768px) {
+  .left-side-menu-pc {
+    display: none;
+    visibility: hidden;
+  }
   .header-LeftSide a {
     margin-left: 35px;
   }
@@ -481,8 +535,60 @@ h1::first-letter {
     content: "Add";
   }
 }
-
+@media only screen and (max-width: 890px) {
+  .sneakers-info h2 {
+    margin: 15px auto;
+  }
+  .sneakers-info-p {
+    margin: 15px auto;
+  }
+  .left-side-menu-pc {
+    display: none;
+    visibility: hidden;
+  }
+}
+@media only screen and (max-width: 940px) {
+  .header-LeftSide button {
+    display: block;
+    width: 32px;
+    height: 20px;
+    background: 0;
+    border: 0;
+    padding: 2px 0;
+  }
+  .left-side-menu {
+    width: 70%;
+    height: 816px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background-color: white;
+  }
+  .left-side-menu a {
+    text-decoration: none;
+    color: black;
+  }
+  .left-side-menu button {
+    display: block;
+    visibility: visible;
+    margin: 20px 40px;
+    padding: 2px 0;
+    margin-bottom: 50px;
+  }
+  .header-LeftSide a {
+    width: 100px;
+    margin: 10px 45px;
+    font-weight: 700;
+  }
+}
 @media only screen and (min-width: 1024px) {
+  .left-side-menu {
+    display: none;
+    visibility: hidden;
+  }
   .header {
     padding: 20px;
     padding-bottom: 0;
@@ -499,13 +605,13 @@ h1::first-letter {
   .header-LeftSide {
     align-items: center;
   }
-  .left-side-menu {
+  .left-side-menu-pc {
     width: 70%;
     margin-left: 30px;
     display: inline;
     visibility: visible;
   }
-  .left-side-menu a {
+  .left-side-menu-pc a {
     float: left;
     height: 50px;
     display: block;
@@ -516,7 +622,7 @@ h1::first-letter {
     margin: 0 10px;
     border-bottom: 4px solid transparent;
   }
-  .left-side-menu a:hover {
+  .left-side-menu-pc a:hover {
     color: #1d2026;
     border-bottom: 4px solid #ff7e1b;
   }
@@ -644,6 +750,10 @@ h1::first-letter {
     width: 100%;
     border-radius: 15px;
   }
+  .header-LeftSide button {
+    display: none;
+    visibility: hidden;
+  }
 }
 
 /*  */
@@ -651,10 +761,10 @@ h1::first-letter {
   .header-RightSide span {
     right: 17.4%;
   }
-  .left-side-menu {
+  .left-side-menu-pc {
     width: 90%;
   }
-  .left-side-menu a {
+  .left-side-menu-pc a {
     font-size: 17px;
     margin: 0 20px;
   }
@@ -703,5 +813,9 @@ h1::first-letter {
   }
   .customerReview {
     width: 60%;
+  }
+  .addToCart {
+    width: 60%;
+    padding: 22px 0;
   }
 }
